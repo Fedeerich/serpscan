@@ -1,0 +1,47 @@
+{
+  "name": "serpscan",
+  "version": "1.0.0",
+  "description": "SEO analyzer CLI — analyze any web page and get actionable improvement suggestions",
+  "bin": {
+    "serpscan": "./bin/cli.js"
+  },
+  "main": "./src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node bin/cli.js",
+    "dev": "node --watch bin/cli.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "format": "prettier --write \"src/**/*.js\" \"bin/**/*.js\" \"tests/**/*.js\""
+  },
+  "keywords": [
+    "seo",
+    "analyzer",
+    "cli",
+    "web",
+    "audit"
+  ],
+  "author": "Klara",
+  "license": "MIT",
+  "dependencies": {
+    "@inquirer/prompts": "^8.5.2",
+    "axios": "^1.7.9",
+    "boxen": "^8.0.1",
+    "chalk": "^5.3.0",
+    "cheerio": "^1.0.0",
+    "cli-table3": "^0.6.5",
+    "commander": "^12.1.0",
+    "figlet": "^1.11.0",
+    "gradient-string": "^3.0.0",
+    "ora": "^8.1.1",
+    "robots-parser": "^3.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.6.0",
+    "globals": "^17.7.0",
+    "prettier": "^3.9.4",
+    "vitest": "^4.1.9"
+  }
+}

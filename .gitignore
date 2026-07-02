@@ -1,0 +1,4 @@
+node_modules/
+*.json.bak
+.DS_Store
+.claude/
