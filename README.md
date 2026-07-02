@@ -94,5 +94,3 @@ npm test      # ejecuta los tests (vitest)
 npm run lint  # eslint
 npm run format # prettier
 ```
-
-Ver [PLAN.md](PLAN.md) para el historial de mejoras implementadas.
