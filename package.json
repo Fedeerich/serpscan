@@ -1,12 +1,27 @@
 {
   "name": "serpscan",
-  "version": "1.0.0",
-  "description": "SEO analyzer CLI — analyze any web page and get actionable improvement suggestions",
+  "version": "1.0.1",
+  "description": "SerpScan — SEO analyzer CLI. Analyze any web page and get actionable improvement suggestions",
   "bin": {
-    "serpscan": "./bin/cli.js"
+    "serpscan": "bin/cli.js"
   },
   "main": "./src/index.js",
   "type": "module",
+  "files": [
+    "bin",
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fedeerich/serpscan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Fedeerich/serpscan/issues"
+  },
+  "homepage": "https://github.com/Fedeerich/serpscan#readme",
   "scripts": {
     "start": "node bin/cli.js",
     "dev": "node --watch bin/cli.js",
@@ -31,7 +46,6 @@
     "chalk": "^5.3.0",
     "cheerio": "^1.0.0",
     "cli-table3": "^0.6.5",
-    "commander": "^12.1.0",
     "figlet": "^1.11.0",
     "gradient-string": "^3.0.0",
     "ora": "^8.1.1",
