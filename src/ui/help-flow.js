@@ -3,12 +3,13 @@ import chalk from 'chalk';
 import boxen from 'boxen';
 import { showSectionHeader, K_BLUE, K_PURPLE, klaraGradient } from './banner.js';
 import { t } from '../i18n.js';
+import { sym } from './glyphs.js';
 
 const purple = chalk.hex(K_PURPLE);
 const K_GREEN = '#22C55E';
 
 function section(icon, titleKey, bodyKey) {
-  console.log('\n' + klaraGradient(`  ${icon}  ${t(titleKey)}`));
+  console.log('\n' + klaraGradient(`  ${sym(icon)}  ${t(titleKey)}`));
   console.log(chalk.hex(K_BLUE).dim('  ' + '─'.repeat(56)));
   for (const line of t(bodyKey)) {
     console.log(`  ${chalk.hex(K_GREEN)('›')} ${chalk.white(line)}`);

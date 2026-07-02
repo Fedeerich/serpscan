@@ -7,6 +7,7 @@ import { addToHistory } from '../config.js';
 import { saveBulkSummaryCsv } from '../reporters/csv.js';
 import { showSectionHeader, K_BLUE, klaraGradient } from './banner.js';
 import { t } from '../i18n.js';
+import { sym } from './glyphs.js';
 
 const blue = chalk.hex(K_BLUE);
 const K_GREEN = '#22C55E';
@@ -111,7 +112,7 @@ export async function bulkFlow() {
   const action = await select({
     message: t('bulkContinue'),
     choices: [
-      { name: `${blue('💾')}  ${t('bulkExport')}`, value: 'export' },
+      { name: `${blue(sym('💾'))}  ${t('bulkExport')}`, value: 'export' },
       { name: t('bulkBack'), value: 'back' },
     ],
   }).catch(() => 'back');

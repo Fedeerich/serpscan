@@ -10,20 +10,21 @@ import { bulkFlow } from './bulk-flow.js';
 import { historyFlow } from './history-flow.js';
 import { settingsFlow } from './settings-flow.js';
 import { helpFlow } from './help-flow.js';
+import { sym } from './glyphs.js';
 
 const blue   = chalk.hex(K_BLUE);
 const purple = chalk.hex(K_PURPLE);
 
 const ICONS = {
-  seo:       '🔍',
-  rank:      '📍',
-  pagespeed: '🚀',
-  compare:   '📊',
-  bulk:      '📦',
-  history:   '📋',
-  settings:  '🔧',
-  help:      '❓',
-  exit:      '✕ ',
+  seo:       sym('🔍'),
+  rank:      sym('📍'),
+  pagespeed: sym('🚀'),
+  compare:   sym('📊'),
+  bulk:      sym('📦'),
+  history:   sym('📋'),
+  settings:  sym('🔧'),
+  help:      sym('❓'),
+  exit:      sym('✕') + ' ',
 };
 
 const COL = 32;
@@ -69,7 +70,7 @@ function selectedLabel(value) {
     history:   `${ICONS.history}  ${t('menuHistory')}`,
     settings:  `${ICONS.settings}  ${t('menuSettings')}`,
     help:      `${ICONS.help}  ${t('menuHelp')}`,
-    exit:      `✕  ${t('menuExit')}`,
+    exit:      `${sym('✕')}  ${t('menuExit')}`,
   };
   return map[value] ?? value;
 }

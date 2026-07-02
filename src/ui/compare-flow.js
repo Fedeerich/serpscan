@@ -4,6 +4,7 @@ import Table from 'cli-table3';
 import { analyzeUrl } from '../index.js';
 import { showSectionHeader, K_BLUE, K_PURPLE } from './banner.js';
 import { t } from '../i18n.js';
+import { sym } from './glyphs.js';
 
 const K_GREEN = '#22C55E';
 const K_AMBER = '#F5A623';
@@ -123,7 +124,7 @@ function printTopIssues(report) {
 
   for (const issue of top) {
     const color = issue.severity === 'critical' ? chalk.red : chalk.hex(K_AMBER);
-    const icon  = issue.severity === 'critical' ? '✖' : '⚠';
+    const icon  = sym(issue.severity === 'critical' ? '✖' : '⚠');
     console.log(`    ${color(icon)} ${issue.message}`);
   }
 }

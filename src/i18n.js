@@ -1,3 +1,5 @@
+import { sym } from './ui/glyphs.js';
+
 const translations = {
   en: {
     // Banner
@@ -558,7 +560,8 @@ export function getLang() {
 
 export function t(key, ...args) {
   const val = translations[currentLang]?.[key] ?? translations.en[key] ?? key;
-  return typeof val === 'function' ? val(...args) : val;
+  const result = typeof val === 'function' ? val(...args) : val;
+  return Array.isArray(result) ? result.map(sym) : sym(result);
 }
 
 export const SUPPORTED_LANGS = {

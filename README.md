@@ -87,6 +87,17 @@ Como alternativa más segura a guardar las claves en disco, también puedes defi
 
 ---
 
+## Windows
+
+En Windows Terminal o en la terminal integrada de VS Code los iconos se ven perfectos. En la consola clásica (`cmd.exe` o PowerShell fuera de Windows Terminal), SerpScan detecta automáticamente que faltan fuentes de emoji y usa símbolos ASCII en su lugar (`>`, `[OK]`, `[!]`...) — no hace falta configurar nada. Si aun así prefieres forzar un modo u otro:
+
+```bash
+set SERPSCAN_NO_EMOJI=1     # forzar símbolos ASCII
+set SERPSCAN_FORCE_EMOJI=1  # forzar emoji aunque no se detecten
+```
+
+---
+
 ## Desarrollo
 
 ```bash

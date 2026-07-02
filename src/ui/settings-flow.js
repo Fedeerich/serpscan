@@ -4,6 +4,7 @@ import boxen from 'boxen';
 import { loadConfig, saveConfig } from '../config.js';
 import { showSectionHeader, K_BLUE } from './banner.js';
 import { t, setLang, getLang, SUPPORTED_LANGS } from '../i18n.js';
+import { sym } from './glyphs.js';
 
 const blue = chalk.hex(K_BLUE);
 
@@ -14,11 +15,11 @@ export async function settingsFlow() {
 
   while (true) {
     const serpStatus = config.serpApiKey
-      ? chalk.green(`✔ ${config.serpApiKey.slice(0, 6)}…`)
-      : chalk.red(`✖ ${t('settingsNotSet')}`);
+      ? chalk.green(`${sym('✔')} ${config.serpApiKey.slice(0, 6)}…`)
+      : chalk.red(`${sym('✖')} ${t('settingsNotSet')}`);
 
     const googleStatus = config.googleApiKey
-      ? chalk.green(`✔ ${config.googleApiKey.slice(0, 6)}…`)
+      ? chalk.green(`${sym('✔')} ${config.googleApiKey.slice(0, 6)}…`)
       : chalk.gray(t('settingsNone'));
 
     const defaultUrlStatus = config.defaultUrl
@@ -40,23 +41,23 @@ export async function settingsFlow() {
       message: chalk.white(t('settingsPrompt')),
       choices: [
         {
-          name: `${blue('🔑')}  ${t('settingsSerpKey')}        ${chalk.gray(t('settingsSerpDesc'))}`,
+          name: `${blue(sym('🔑'))}  ${t('settingsSerpKey')}        ${chalk.gray(t('settingsSerpDesc'))}`,
           value: 'serp',
         },
         {
-          name: `${blue('⚡')}  ${t('settingsGoogleKey')}  ${chalk.gray(t('settingsGoogleDesc'))}`,
+          name: `${blue(sym('⚡'))}  ${t('settingsGoogleKey')}  ${chalk.gray(t('settingsGoogleDesc'))}`,
           value: 'google',
         },
         {
-          name: `${blue('🌐')}  ${t('settingsUrl')}        ${chalk.gray(t('settingsUrlDesc'))}`,
+          name: `${blue(sym('🌐'))}  ${t('settingsUrl')}        ${chalk.gray(t('settingsUrlDesc'))}`,
           value: 'url',
         },
         {
-          name: `${blue('🌍')}  ${t('settingsLang')}       ${chalk.gray(t('settingsLangDesc'))}`,
+          name: `${blue(sym('🌍'))}  ${t('settingsLang')}       ${chalk.gray(t('settingsLangDesc'))}`,
           value: 'lang',
         },
         {
-          name: `${chalk.red('🗑')}   ${t('settingsClear')}`,
+          name: `${chalk.red(sym('🗑'))}   ${t('settingsClear')}`,
           value: 'clear',
         },
         {

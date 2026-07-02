@@ -8,6 +8,7 @@ import { loadConfig } from '../config.js';
 import { showSectionHeader, K_BLUE, K_PURPLE, klaraGradient } from './banner.js';
 import { analyzeCompetitorPage } from '../analyzers/competitor.js';
 import { t } from '../i18n.js';
+import { sym } from './glyphs.js';
 
 const blue   = chalk.hex(K_BLUE);
 const purple = chalk.hex(K_PURPLE);
@@ -23,11 +24,11 @@ function printRankingTips(rank, results, domain, keyword, serpData) {
     top3.forEach((r, i) => {
       const d = extractDomain(r.link ?? '');
       const isMine = d.includes(domain) || domain.includes(d);
-      const medal = ['🥇', '🥈', '🥉'][i];
+      const medal = [sym('🥇'), sym('🥈'), sym('🥉')][i];
       const kwLower = keyword.toLowerCase();
       const titleHasKw = (r.title ?? '').toLowerCase().includes(kwLower);
       const titleStr = (r.title ?? '').substring(0, 50);
-      const kwTag = titleHasKw ? chalk.hex(K_GREEN)(' ✔ kw') : chalk.red(' ✖ kw');
+      const kwTag = titleHasKw ? chalk.hex(K_GREEN)(` ${sym('✔')} kw`) : chalk.red(` ${sym('✖')} kw`);
       if (isMine) {
         console.log(`  ${medal} ${blue.bold(d.padEnd(26))} ${chalk.hex(K_GREEN)('← tú')}${kwTag}`);
       } else {
@@ -155,7 +156,7 @@ async function runCompetitiveAnalysis(myUrl, competitors, keyword) {
   const maxH2     = Math.max(...all.filter(p => p.ok).map(p => p.h2Count));
   const maxImages = Math.max(...all.filter(p => p.ok).map(p => p.images));
 
-  const spaPlaceholder = chalk.yellow('⚠ SPA');
+  const spaPlaceholder = chalk.yellow(`${sym('⚠')} SPA`);
 
   function row(label, fn) {
     return [chalk.gray(label), ...pages.map((p, i) => {
@@ -169,14 +170,14 @@ async function runCompetitiveAnalysis(myUrl, competitors, keyword) {
 
   table.push(
     row('Palabras',         (p, m) => num(p.wordCount,  maxWords,  m)),
-    row('Keyword en título', (p, m) => cell(p.titleHasKw ? '✔' : '✖', p.titleHasKw, m)),
-    row('Keyword en H1',    (p, m) => cell(p.h1HasKw    ? '✔' : '✖', p.h1HasKw,    m)),
+    row('Keyword en título', (p, m) => cell(p.titleHasKw ? sym('✔') : sym('✖'), p.titleHasKw, m)),
+    row('Keyword en H1',    (p, m) => cell(p.h1HasKw    ? sym('✔') : sym('✖'), p.h1HasKw,    m)),
     row('H2 con keyword',   (p, m) => num(p.h2WithKw,  Math.max(...all.filter(x=>x.ok).map(x=>x.h2WithKw)), m)),
     row('Headings H2',      (p, m) => num(p.h2Count,   maxH2,     m)),
     row('Imágenes',         (p, m) => num(p.images,    maxImages, m)),
     row('Densidad keyword', (p, _m) => chalk.gray(p.kwDensity + '%')),
-    row('Schema markup',    (p, m) => cell(p.hasSchema ? '✔' : '✖', p.hasSchema,   m)),
-    row('Open Graph',       (p, m) => cell(p.hasOg     ? '✔' : '✖', p.hasOg,       m)),
+    row('Schema markup',    (p, m) => cell(p.hasSchema ? sym('✔') : sym('✖'), p.hasSchema,   m)),
+    row('Open Graph',       (p, m) => cell(p.hasOg     ? sym('✔') : sym('✖'), p.hasOg,       m)),
     row('Velocidad fetch',  (p, m) => {
       if (!p.ok) return chalk.gray('—');
       const ms = p.loadMs;
@@ -234,7 +235,7 @@ async function runCompetitiveAnalysis(myUrl, competitors, keyword) {
   }
 
   if (gaps.length === 0) {
-    console.log('\n' + chalk.hex(K_GREEN)('  ✔ Tu página está bien optimizada frente a la competencia.\n'));
+    console.log('\n' + chalk.hex(K_GREEN)(`  ${sym('✔')} Tu página está bien optimizada frente a la competencia.\n`));
   } else {
     console.log('\n' + klaraGradient('  Brechas detectadas vs competencia'));
     console.log(chalk.hex(K_BLUE).dim('  ' + '─'.repeat(60)));

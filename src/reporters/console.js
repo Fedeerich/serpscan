@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import Table from 'cli-table3';
 import gradient from 'gradient-string';
 import { t } from '../i18n.js';
+import { sym } from '../ui/glyphs.js';
 
 const K_BLUE   = '#0947F8';
 const K_PURPLE = '#6300C4';
@@ -17,9 +18,9 @@ const SEVERITY_COLOR = {
 };
 
 const SEVERITY_ICON = {
-  critical: '✖',
-  warning:  '⚠',
-  info:     'ℹ',
+  critical: sym('✖'),
+  warning:  sym('⚠'),
+  info:     sym('ℹ'),
 };
 
 const CAT_KEY_MAP = {
@@ -91,7 +92,7 @@ export function printReport(report) {
   if (allPassed.length > 0) {
     console.log('\n' + chalk.hex(K_GREEN).bold(t('reportWorking')));
     for (const p of allPassed) {
-      console.log(`  ${chalk.hex(K_GREEN)('✔')} ${p}`);
+      console.log(`  ${chalk.hex(K_GREEN)(sym('✔'))} ${p}`);
     }
   }
 

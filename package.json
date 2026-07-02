@@ -1,6 +1,6 @@
 {
   "name": "serpscan",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "SerpScan — SEO analyzer CLI. Analyze any web page and get actionable improvement suggestions",
   "bin": {
     "serpscan": "bin/cli.js"

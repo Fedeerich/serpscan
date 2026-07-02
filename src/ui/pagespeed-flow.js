@@ -7,6 +7,7 @@ import { fetchPageSpeed } from '../analyzers/pagespeed.js';
 import { loadConfig } from '../config.js';
 import { showSectionHeader, K_BLUE, klaraGradient } from './banner.js';
 import { t } from '../i18n.js';
+import { sym } from './glyphs.js';
 
 const K_GREEN = '#22C55E';
 const K_AMBER = '#F5A623';
@@ -90,10 +91,10 @@ function printStrategyReport(result) {
   // Opportunities
   console.log('\n  ' + chalk.bold(t('psOpportunities')));
   if (result.opportunities.length === 0) {
-    console.log('  ' + green('✔ ' + t('psNoOpportunities')));
+    console.log('  ' + green(sym('✔') + ' ' + t('psNoOpportunities')));
   } else {
     for (const opp of result.opportunities) {
-      const icon = opp.score < 0.5 ? red('✖') : amber('⚠');
+      const icon = opp.score < 0.5 ? red(sym('✖')) : amber(sym('⚠'));
       const saving = opp.displayValue ? chalk.gray(` — ${opp.displayValue}`) : '';
       console.log(`  ${icon} ${chalk.white(opp.title)}${saving}`);
       if (opp.description) {
@@ -127,7 +128,7 @@ export async function pageSpeedFlow() {
     const action = await select({
       message: t('psContinue'),
       choices: [
-        { name: `⚙️  Ir a Ajustes para añadir la clave Google API`, value: 'settings' },
+        { name: `${sym('⚙️')}  Ir a Ajustes para añadir la clave Google API`, value: 'settings' },
         { name: t('psBack'), value: 'back' },
       ],
     }).catch(() => 'back');

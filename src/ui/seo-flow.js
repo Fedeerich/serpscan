@@ -8,6 +8,7 @@ import { saveHtmlReport } from '../reporters/html.js';
 import { addToHistory, loadConfig } from '../config.js';
 import { showSectionHeader, K_BLUE } from './banner.js';
 import { t } from '../i18n.js';
+import { sym } from './glyphs.js';
 
 const blue = chalk.hex(K_BLUE);
 
@@ -56,10 +57,10 @@ async function runAnalysis(url) {
     const hasSubpages = report.internalLinks && report.internalLinks.length > 0;
 
     const choices = [
-      { name: `${chalk.hex('#22C55E')('✔')}  ${t('seoDone')}`,    value: 'done'     },
-      { name: `${blue('💾')}  ${t('seoSaveReport')}`,              value: 'save'     },
-      ...(hasSubpages ? [{ name: `${blue('📄')}  Analizar una subpágina (${report.internalLinks.length} encontradas)`, value: 'subpage' }] : []),
-      { name: `${blue('🔄')}  ${t('seoAgain')}`,                   value: 'again'    },
+      { name: `${chalk.hex('#22C55E')(sym('✔'))}  ${t('seoDone')}`,    value: 'done'     },
+      { name: `${blue(sym('💾'))}  ${t('seoSaveReport')}`,              value: 'save'     },
+      ...(hasSubpages ? [{ name: `${blue(sym('📄'))}  Analizar una subpágina (${report.internalLinks.length} encontradas)`, value: 'subpage' }] : []),
+      { name: `${blue(sym('🔄'))}  ${t('seoAgain')}`,                   value: 'again'    },
     ];
 
     const action = await select({
